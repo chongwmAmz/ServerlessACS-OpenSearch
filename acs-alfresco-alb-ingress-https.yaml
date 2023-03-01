@@ -1,0 +1,68 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: <ARN_Of_Certificate>
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/load-balancer-name: acs-alfresco-alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/success-codes: "200"
+    alb.ingress.kubernetes.io/target-type: ip
+  name: acs-alfresco-alb-ingress-https
+  namespace: alfresco
+spec:
+  ingressClassName: alb
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: acs-alfresco-cs-repository
+            port:
+              number: 80
+        path: /repository
+        pathType: Prefix
+  - http:
+      paths:
+      - backend:
+          service:
+            name: acs-alfresco-cs-share
+            port:
+              number: 80
+        path: /share
+        pathType: Prefix
+  - http:
+      paths:
+      - backend:
+          service:
+            name: acs-alfresco-cs-repository
+            port:
+              number: 80
+        path: /api-explorer
+        pathType: Prefix
+      - backend:
+          service:
+            name: acs-alfresco-cs-repository
+            port:
+              number: 80
+        path: /alfresco
+        pathType: Prefix
+  - http:
+      paths:
+      - backend:
+          service:
+            name: acs-alfresco-sync-service
+            port:
+              number: 80
+        path: /syncservice
+        pathType: Prefix
+  - http:
+      paths:
+      - backend:
+          service:
+            name: acs-alfresco-dw
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
