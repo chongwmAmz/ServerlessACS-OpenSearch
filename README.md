@@ -1,6 +1,6 @@
 ## Using AWS OpenSearch With Serverless Alfresco Content Services
 
-This repository contains files that accompany an [AWS Partner Network (APN) blog of the same title](https://aws.amazon.com/blogs/apn/using-amazon-opensearch-service-with-serverless-alfresco-content-services/).
+This repository contains files that accompany an [AWS Partner Network (APN) blog](https://aws.amazon.com/blogs/apn/using-amazon-opensearch-service-with-serverless-alfresco-content-services/) of the same title.
 
 The blog written in collaboration with [Hyland](https://www.alfresco.com/news/press-releases/hyland-completes-acquisition-alfresco), seeks to demonstrate a deployment of [Alfresco Content Services](https://docs.alfresco.com/content-services/latest/) (ACS) 7.3 on [Amazon Elastic Kubernetes Service (Amazon EKS)](https://aws.amazon.com/eks/) using [AWS Fargate](https://aws.amazon.com/fargate/) as the serverless compute engine. [Amazon OpenSearch Service](https://aws.amazon.com/opensearch-service/) is used to provide Elasticsearch services to [Alfresco Search Enterprise](https://docs.alfresco.com/search-enterprise/latest/) 3.2.
 
