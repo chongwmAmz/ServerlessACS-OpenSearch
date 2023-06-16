@@ -9,3 +9,10 @@ Note that the AWS account used for deployment should be provided, at minimum, wi
 ![Architecture](alfresco-FG-EKS-opensearch.png)
 
 The sample code; software libraries; command line tools; proofs of concept; templates; or other related technology (including any of the foregoing that are provided by our personnel) is provided to you as AWS Content under the AWS Customer Agreement, or the relevant written agreement between you and AWS (whichever applies). You should not use this AWS Content in your production accounts, or on production or other critical data. You are responsible for testing, securing, and optimizing the AWS Content, such as sample code, as appropriate for production grade use based on your specific quality control practices and standards. Deploying AWS Content may incur AWS charges for creating or using AWS chargeable resources, such as running [Fargate](https://aws.amazon.com/fargate/) or using [Amazon Elastic File System (Amazon EFS)](https://aws.amazon.com/efs) storage.
+
+
+### Update
+
+Since the publishing of the blog on APN, enhancements has been made to the deployment to enable sticky sessions. The generated template should be updated with the following snippets before step 10 of the APN blog. 
+1. Sticky session on the Application Load Balancer is configured with the `alb.ingress.kubernetes.io/target-group-attributes` annotation in [Ingress snippet file](acs-alfresco-alb-ingress-https.yaml). The need for sticky sessions is prescribed in [Hyland's configuration document for Alfresco Content Services](https://docs.alfresco.com/content-services/latest/admin/cluster/#scenarioredundancycluster).
+2. Sticky session within the k8s cluster for the repository pod is configured with the `spec.sessionAffinity=ClientIP` directive in [repository Service snippet file](repo-service-sticky.yaml). The need for sticky sessions is prescribed in [Hyland's configuration document for Alfresco Share](https://docs.alfresco.com/content-services/latest/admin/cluster/#configure-alfresco-share-clustering).
