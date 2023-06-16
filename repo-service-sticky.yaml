@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: acs-alfresco-cs-repository
+  labels:
+    chart: alfresco-content-services-5.3.0
+    app: acs-alfresco-cs-repository
+    release: acs
+    component: repository
+    heritage: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: alfresco
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  selector:
+    app: acs-alfresco-cs-repository
+    release: acs
+    component: repository
+---
